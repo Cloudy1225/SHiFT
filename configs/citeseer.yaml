@@ -1,0 +1,87 @@
+# Configuration for Citeseer dataset
+
+# Dataset
+dataset: citeseer
+data_path: .
+re_split: 0
+
+# Model Architecture
+gnn_type: GCN
+n_layers: 2
+hidden_dim: 128
+output_dim: 128
+projection_dim: 256
+dropout: 0.0
+batch_norm: 1
+residual_conn: 1
+jump_knowledge: 0
+
+# Text Encoder
+text_encoder: roberta
+use_cls: 1
+text_batch_size: 32
+
+# Training
+warmup_epochs: 50
+total_epochs: 75
+lr: 0.001
+weight_decay: 0.00001
+warmup_patience: 10
+patience: 20
+
+# Augmentation
+drop_edge_p: 0.3
+drop_feat_p: 0.2
+
+# Loss Weights
+alpha: 0.5  # TSA
+beta: 0.3   # TCA
+gamma: 1.0  # Negative samples
+lambda_decay: 1.5
+
+# Memory Efficiency
+max_pos_samples: 2000000
+max_neg_samples: 2000000
+max_tca_samples: 10000
+
+# LLM Configuration
+api_key: OoKVqDx0WmoSoovycGnTBwyKAkjBwC4Y
+llm_model: DeepSeek-V3
+base_url: https://antchat.alipay.com/v1
+temperature: 0.1
+cache_dir: ./llm_cache
+llm_max_retries: 3
+
+# Taxonomy
+max_depth: 3
+min_docs: 50
+over_cluster_factor: 6
+sampling_method: pagerank
+top_k: 5
+
+# Taxonomy Update
+taxonomy_update_interval: 10
+cosine_threshold: 0.0
+merge_threshold: 0.9
+variance_ratio: 1.5
+size_ratio: 2.5
+turnover_threshold: 0.5
+min_cluster_size: 5
+
+# Evaluation
+finetune: 1
+eval_only: 0
+resume: null
+finetune_lr: 0.001
+finetune_weight_decay: 0.0005
+finetune_patience: 10
+finetune_epochs: 100
+
+# Output
+output_dir: ./output
+log_interval: 10
+visualize: 0
+
+# Device
+device: cuda:0
+random_seed: 42

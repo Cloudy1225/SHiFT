@@ -1,0 +1,85 @@
+# Configuration for USPTO-CPC Patent dataset
+# Run from the SHiFT/ directory:
+#   python train_patent.py --config configs/patent.yaml
+
+# --- Dataset -----------------------------------------------------------
+dataset: patent
+data_path: .
+
+# --- GNN Architecture --------------------------------------------------
+gnn_type: GCN
+n_layers: 2
+hidden_dim: 256
+output_dim: 256
+projection_dim: 512
+dropout: 0.5
+batch_norm: 1
+residual_conn: 1
+jump_knowledge: 0
+
+# --- Text Encoder ------------------------------------------------------
+text_encoder: roberta       # pre-computed features loaded from patent/roberta_patent_features.pt
+use_cls: 0                  # 0 = mean pooling (sentence-transformers convention)
+text_batch_size: 32
+
+# --- Training ----------------------------------------------------------
+warmup_epochs: 50
+total_epochs: 150
+lr: 0.001
+weight_decay: 0.00001
+warmup_patience: 20
+patience: 30
+log_interval: 10
+
+# --- Augmentation ------------------------------------------------------
+drop_edge_p: 0.2
+drop_feat_p: 0.1
+
+# --- Loss Weights ------------------------------------------------------
+alpha: 0.5        # TSA weight
+beta: 0.3         # TCA weight
+gamma: 1.0        # Negative sample weight
+lambda_decay: 1.5 # TCA depth decay
+
+# --- Memory Efficiency -------------------------------------------------
+max_pos_samples: 2000000
+max_neg_samples: 2000000
+max_tca_samples: 10000
+
+# --- LLM Configuration (taxonomy construction) -------------------------
+api_key: API_KEY
+llm_model: deepseek-v4-flash
+base_url: BASE_URL
+temperature: 0.1
+cache_dir: ./llm_cache
+llm_max_retries: 3
+
+# --- Taxonomy ----------------------------------------------------------
+max_depth: 3
+min_docs: 30
+over_cluster_factor: 7
+sampling_method: pagerank
+top_k: 5
+
+# --- Taxonomy Update ---------------------------------------------------
+taxonomy_update_interval: 20
+cosine_threshold: 0.0
+merge_threshold: 0.9
+variance_ratio: 1.5
+size_ratio: 2.5
+turnover_threshold: 0.5
+min_cluster_size: 5
+
+# --- Evaluation --------------------------------------------------------
+finetune: 1             # 1 = fine-tune GNN+heads; 0 = frozen linear probe
+n_runs: 5               # independent runs for mean ± std
+finetune_lr: 0.001
+finetune_weight_decay: 0.0005
+finetune_patience: 10
+finetune_epochs: 100
+
+# --- Output / Misc -----------------------------------------------------
+output_dir: ./output
+visualize: 0
+device: cuda:0
+random_seed: 42

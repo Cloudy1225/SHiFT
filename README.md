@@ -1,8 +1,18 @@
-# Uncovering Semantic Hierarchy in Text-Attributed Graphs via Large Language Models
+# Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM–GNN Synergy
 
 This repository contains the official implementation of the paper:
 
-> **Uncovering Semantic Hierarchy in Text-Attributed Graphs via Large Language Models**  
+> [**Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM–GNN Synergy**](https://arxiv.org/abs/2610.24624)
+
+```bibtex
+@inproceedings{liu2026uncovering,
+  title={Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy},
+  author={Yunhui Liu and Xudong Jin and Qizhuo Xie and Chunhui Zhao and Xiao Luo and Tao Zheng and Bin Chong and Tieke He},
+  booktitle={The Fortieth Annual Conference on Neural Information Processing Systems},
+  year={2026},
+  url={https://openreview.net/forum?id=Rm5u5TMKcq}
+}
+```
 
 SHiFT automatically uncovers multi-level semantic concepts using LLM-powered hierarchical clustering, and injects the resulting taxonomy into graph representation learning through a three‑part hierarchy-aware objective, including: Taxonomy Partition Alignment, Taxonomy Skeleton Alignment, and Taxonomy Concept Alignment . By iteratively refining the taxonomy and embeddings in an EM-style loop, SHiFT produces not only hierarchy-aware node embeddings, but also human-readable taxonomies with concept names and definitions.
 

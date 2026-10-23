@@ -1,8 +1,8 @@
-# Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM–GNN Synergy
+# Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy
 
 This repository contains the official implementation of the paper:
 
-> [**Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM–GNN Synergy**](https://arxiv.org/abs/2610.24624)
+> [**Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy**](https://arxiv.org/abs/2610.24624)
 
 ```bibtex
 @inproceedings{liu2026uncovering,
